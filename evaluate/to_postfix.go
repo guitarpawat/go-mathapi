@@ -7,15 +7,6 @@ import (
 	"github.com/guitarpawat/go-mathapi/stack"
 )
 
-var operator = map[string]int{
-	"+": 1,
-	"-": 1,
-	"*": 2,
-	"/": 2,
-	"%": 2,
-	"^": 3,
-}
-
 // InfixToPostfix converts infix maths expression to postfix, that is easier to calculate
 func InfixToPostfix(infix []string) ([]string, error) {
 	postfix := []string{}

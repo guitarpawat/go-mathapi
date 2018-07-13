@@ -5,6 +5,8 @@ go:
   - 1.9.x
   - 1.10.x
 
+  go_import_path: github.com/guitarpawat/go-mathapi
+
 before_install:
   - go get -t -v ./...
 
@@ -12,4 +14,4 @@ script:
   - go test -race -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t bdd5ccc8-32fd-4732-bc44-bbed28e4a159
+  - bash <(curl -s https://codecov.io/bash)

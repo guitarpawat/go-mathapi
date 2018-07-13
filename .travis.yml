@@ -7,6 +7,11 @@ go:
 
 go_import_path: github.com/guitarpawat/go-mathapi
 
+branches:
+  only:
+  - master
+  - dev
+
 before_install:
   - go get -t -v ./...
 

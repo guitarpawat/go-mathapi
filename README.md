@@ -13,7 +13,7 @@ The default host is localhost and port is 8000. You can specify it by using `-ho
 
 ### Example
 ```
-go run main.go -port -8080
+go run main.go -port 8080
 ```
 This will run the API on localhost:8080
 

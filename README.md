@@ -1,5 +1,7 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/guitarpawat/go-mathapi)](https://goreportcard.com/report/github.com/guitarpawat/go-mathapi)
 [![Build Status](https://travis-ci.org/guitarpawat/go-mathapi.svg?branch=master)](https://travis-ci.org/guitarpawat/go-mathapi)
 [![codecov](https://codecov.io/gh/guitarpawat/go-mathapi/branch/master/graph/badge.svg)](https://codecov.io/gh/guitarpawat/go-mathapi)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
 # go-mathapi
 API that solves math problem.

@@ -4,6 +4,7 @@ pkg/
 *.test
 *.out
 *.sh
+*.exe
 
 _*.go
 coverage.txt

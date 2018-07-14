@@ -59,17 +59,17 @@ func cal(n1, n2, op string) (string, error) {
 	}
 
 	switch op {
-	case "+":
+	case "add":
 		return fmt.Sprintf("%.4f", f2+f1), nil
-	case "-":
+	case "sub":
 		return fmt.Sprintf("%.4f", f2-f1), nil
-	case "*":
+	case "mul":
 		return fmt.Sprintf("%.4f", f2*f1), nil
-	case "/":
+	case "div":
 		return fmt.Sprintf("%.4f", f2/f1), nil
-	case "%":
+	case "mod":
 		return fmt.Sprintf("%.4f", float64(int(f2)%int(f1))), nil
-	case "^":
+	case "pow":
 		return fmt.Sprintf("%.4f", math.Pow(f2, f1)), nil
 	default:
 		return "", fmt.Errorf("unknown operator: %s", op)

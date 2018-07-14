@@ -5,7 +5,7 @@ import (
 )
 
 func Test_Solve_1_2_Add_ShouldBe_3(t *testing.T) {
-	input := []string{"1", "2", "+"}
+	input := []string{"1", "2", "add"}
 	expected := "3.0000"
 	actual, err := Solve(input)
 
@@ -20,7 +20,7 @@ func Test_Solve_1_2_Add_ShouldBe_3(t *testing.T) {
 }
 
 func Test_Solve_1_2_Sub_ShouldBe_Minus1(t *testing.T) {
-	input := []string{"1", "2", "-"}
+	input := []string{"1", "2", "sub"}
 	expected := "-1.0000"
 	actual, err := Solve(input)
 
@@ -35,7 +35,7 @@ func Test_Solve_1_2_Sub_ShouldBe_Minus1(t *testing.T) {
 }
 
 func Test_Solve_3_2_Mul_ShouldBe_6(t *testing.T) {
-	input := []string{"3", "2", "*"}
+	input := []string{"3", "2", "mul"}
 	expected := "6.0000"
 	actual, err := Solve(input)
 
@@ -50,7 +50,7 @@ func Test_Solve_3_2_Mul_ShouldBe_6(t *testing.T) {
 }
 
 func Test_Solve_7_2_Mul_ShouldBe_3Point5(t *testing.T) {
-	input := []string{"7", "2", "/"}
+	input := []string{"7", "2", "div"}
 	expected := "3.5000"
 	actual, err := Solve(input)
 
@@ -65,7 +65,7 @@ func Test_Solve_7_2_Mul_ShouldBe_3Point5(t *testing.T) {
 }
 
 func Test_Solve_8_3_Mod_ShouldBe_2(t *testing.T) {
-	input := []string{"8", "3", "%"}
+	input := []string{"8", "3", "mod"}
 	expected := "2.0000"
 	actual, err := Solve(input)
 
@@ -80,7 +80,7 @@ func Test_Solve_8_3_Mod_ShouldBe_2(t *testing.T) {
 }
 
 func Test_Solve_3_4_Mod_ShouldBe_81(t *testing.T) {
-	input := []string{"3", "4", "^"}
+	input := []string{"3", "4", "pow"}
 	expected := "81.0000"
 	actual, err := Solve(input)
 
@@ -113,7 +113,7 @@ func Test_Solve_Blank_ShouldBe_Error(t *testing.T) {
 }
 
 func Test_Solve_1_Add_ShouldBe_Error(t *testing.T) {
-	input := []string{"1", "+"}
+	input := []string{"1", "add"}
 	_, err := Solve(input)
 
 	if err == nil {
@@ -122,7 +122,7 @@ func Test_Solve_1_Add_ShouldBe_Error(t *testing.T) {
 }
 
 func Test_Solve_Add_ShouldBe_Error(t *testing.T) {
-	input := []string{"+"}
+	input := []string{"add"}
 	_, err := Solve(input)
 
 	if err == nil {
@@ -131,7 +131,7 @@ func Test_Solve_Add_ShouldBe_Error(t *testing.T) {
 }
 
 func Test_Solve_NotNumber_ShouldBe_Error(t *testing.T) {
-	input := []string{"?", "@", "+"}
+	input := []string{"?", "@", "add"}
 	_, err := Solve(input)
 
 	if err == nil {
@@ -140,7 +140,7 @@ func Test_Solve_NotNumber_ShouldBe_Error(t *testing.T) {
 }
 
 func Test_Solve_NotNumberMixed_ShouldBe_Error(t *testing.T) {
-	input := []string{"?", "0", "+"}
+	input := []string{"?", "0", "add"}
 	_, err := Solve(input)
 
 	if err == nil {
@@ -149,7 +149,7 @@ func Test_Solve_NotNumberMixed_ShouldBe_Error(t *testing.T) {
 }
 
 func Test_Solve_Advance1(t *testing.T) {
-	input := []string{"7", "2", "3", "*", "5", "+", "8", "4", "2", "/", "-", "*", "-"}
+	input := []string{"7", "2", "3", "mul", "5", "add", "8", "4", "2", "div", "sub", "mul", "sub"}
 	expected := "-59.0000"
 	actual, err := Solve(input)
 
@@ -164,7 +164,7 @@ func Test_Solve_Advance1(t *testing.T) {
 }
 
 func Test_Solve_Advance2(t *testing.T) {
-	input := []string{"7", "2", "3", "*", "5", "+", "8", "4", "2", "/", "-", "*", "-", "3", "^", "73", "%"}
+	input := []string{"7", "2", "3", "mul", "5", "add", "8", "4", "2", "div", "sub", "mul", "sub", "3", "pow", "73", "mod"}
 	expected := "-30.0000"
 	actual, err := Solve(input)
 

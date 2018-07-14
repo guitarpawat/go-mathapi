@@ -147,3 +147,40 @@ func Test_Solve_NotNumberMixed_ShouldBe_Error(t *testing.T) {
 		t.Errorf("expected error")
 	}
 }
+
+func Test_Solve_Advance1(t *testing.T) {
+	input := []string{"7", "2", "3", "*", "5", "+", "8", "4", "2", "/", "-", "*", "-"}
+	expected := "-59.0000"
+	actual, err := Solve(input)
+
+	if err != nil {
+		t.Errorf("error: %s", err)
+		return
+	}
+
+	if expected != actual {
+		t.Errorf("expected: %s but get: %s", expected, actual)
+	}
+}
+
+func Test_Solve_Advance2(t *testing.T) {
+	input := []string{"7", "2", "3", "*", "5", "+", "8", "4", "2", "/", "-", "*", "-", "3", "^", "73", "%"}
+	expected := "-30.0000"
+	actual, err := Solve(input)
+
+	if err != nil {
+		t.Errorf("error: %s", err)
+		return
+	}
+
+	if expected != actual {
+		t.Errorf("expected: %s but get: %s", expected, actual)
+	}
+}
+
+func Test_cal_Unknown_Operator(t *testing.T) {
+	_, err := cal("0", "0", "=")
+	if err == nil {
+		t.Errorf("expected error")
+	}
+}

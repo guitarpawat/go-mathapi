@@ -72,7 +72,6 @@ func cal(n1, n2, op string) (string, error) {
 	case "^":
 		return fmt.Sprintf("%.4f", math.Pow(f2, f1)), nil
 	default:
-		// Should be impossible to reach here!
-		panic(fmt.Sprintf("unknown operator: %s", op))
+		return "", fmt.Errorf("unknown operator: %s", op)
 	}
 }

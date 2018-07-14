@@ -43,6 +43,13 @@ Output:
 30.0000
 ```
 
+## Procedure
+This program converts infix to postfix expression and solves the problem by using stack datatype.
+
+```
+5*(4+2) => 4 2 + 5 * => 30.0000
+```
+
 ## TODO
 * Add support for constants, for example, `PI = 3.1415926535...`.
 * support for trigonometry and logarithm.

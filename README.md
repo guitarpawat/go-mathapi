@@ -17,6 +17,7 @@ This will run the API on localhost:8080
 
 ## Usage
 There are 8 basic commands:
+
 | Symbol | Command |
 |:------:|:-------:|
 | +      | add     |

@@ -1,9 +1,14 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"net/http"
+
+	"github.com/guitarpawat/go-mathapi/api"
 )
 
 func main() {
-	fmt.Println("Hello world!")
+	http.HandleFunc("/", api.APIHandler)
+	err := http.ListenAndServe(":8000", nil)
+	log.Fatalln(err)
 }

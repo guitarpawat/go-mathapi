@@ -2,7 +2,6 @@ language: go
 
 go:
   - 1.10.x
-  - master
 
 go_import_path: github.com/guitarpawat/go-mathapi
 

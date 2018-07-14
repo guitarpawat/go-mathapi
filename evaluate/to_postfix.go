@@ -19,12 +19,12 @@ func InfixToPostfix(infix []string) ([]string, error) {
 		}
 		if isNumber(v) {
 			postfix = append(postfix, v)
-		} else if v == "(" {
+		} else if v == "par" {
 			temp.Push(v)
-		} else if v == ")" {
+		} else if v == "end" {
 			for !temp.IsEmpty() {
 				op := temp.MustPop()
-				if op == "(" {
+				if op == "par" {
 					break
 				} else {
 					postfix = append(postfix, op)

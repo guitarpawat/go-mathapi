@@ -18,7 +18,7 @@ func Test_1_Add_2_ShouldBe_3(t *testing.T) {
 }
 
 func Test_Parentheses_1_Add_1_ShouldBe_2(t *testing.T) {
-	input := []string{"(", "1", "add", "1", ")"}
+	input := []string{"par", "1", "add", "1", "end"}
 	expected := "2.0000"
 	actual, err := Evaluate(input)
 	if err != nil {

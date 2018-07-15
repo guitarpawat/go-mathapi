@@ -28,3 +28,15 @@
 [prune]
   go-tests = true
   unused-packages = true
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/gomarkdown/markdown"
+
+[[constraint]]
+  name = "gopkg.in/russross/blackfriday.v2"
+  version = "2.0.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/golang-commonmark/markdown"

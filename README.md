@@ -45,6 +45,10 @@ Output:
 30.0000
 ```
 
+## Features
+
+* Support constants for e, pi and phi; just use `/e`, `/pi` and `/phi`.
+
 ## Procedure
 This program converts infix to postfix expression and solves the problem by using stack datatype.
 

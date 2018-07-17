@@ -75,3 +75,25 @@ func Test_APIHandler_Slash_ToIndexHandler(t *testing.T) {
 		t.Errorf("result does not contains: %s only get:\n%s", expected, string(actual))
 	}
 }
+
+func Test_APIHandler_Call_ConstantToNumber(t *testing.T) {
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/pi", nil)
+	APIHandler(res, req)
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected status code: %d but get: %d", http.StatusOK, resp.StatusCode)
+		return
+	}
+
+	actual, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Errorf("unexpected error when reading body: %s", err)
+	}
+
+	expected := "3.141593"
+	if strings.TrimSpace(string(actual)) != expected {
+		t.Errorf("expected result: %s but get: %s", expected, actual)
+	}
+}

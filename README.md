@@ -53,6 +53,5 @@ This program converts infix to postfix expression and solves the problem by usin
 ```
 
 ## TODO
-* Add support for constants, for example, `PI = 3.1415926535...`.
 * support for trigonometry and logarithm.
 * Self define function, for example, `myfunc is (x+y)^2`.

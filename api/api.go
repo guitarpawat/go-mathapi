@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/guitarpawat/go-mathapi/evaluate"
+	"github.com/guitarpawat/go-mathapi/preprocess"
 )
 
 // APIHandler handles the http requst
@@ -21,6 +22,8 @@ func APIHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	token := strings.Split(r.URL.Path, "/")
+
+	token = preprocess.ConstantToNumber(token)
 
 	result, err := evaluate.Evaluate(token[1:])
 	if err != nil {

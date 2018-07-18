@@ -17,7 +17,7 @@ func InfixToPostfix(infix []string) ([]string, error) {
 		if !temp.IsEmpty() {
 			priorityTOS = operator[temp.MustPeek()]
 		}
-		if isNumber(v) {
+		if IsNumber(v) {
 			postfix = append(postfix, v)
 		} else if v == "par" {
 			temp.Push(v)
@@ -54,7 +54,7 @@ func InfixToPostfix(infix []string) ([]string, error) {
 	return postfix, nil
 }
 
-func isNumber(s string) bool {
+func IsNumber(s string) bool {
 	_, err := strconv.ParseFloat(s, 64)
 	return err == nil
 }

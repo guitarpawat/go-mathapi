@@ -40,7 +40,7 @@ func Solve(postfix []string) (string, error) {
 	}
 
 	res := temp.MustPop()
-	if !isNumber(res) {
+	if !IsNumber(res) {
 		return "", fmt.Errorf("%s is not a number", res)
 	}
 

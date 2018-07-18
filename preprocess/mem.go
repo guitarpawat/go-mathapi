@@ -10,6 +10,10 @@ var memMap = map[string]string{}
 
 // AddToMem stores memory(value) to the key of map
 func AddToMem(key string, infix ...string) error {
+	if evaluate.IsNumber(key) {
+		return fmt.Errorf("%s is a number", key)
+	}
+
 	result, err := evaluate.Evaluate(infix)
 	if err != nil {
 		return fmt.Errorf("cannot add to memory: %s", err)

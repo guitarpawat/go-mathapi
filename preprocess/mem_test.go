@@ -8,11 +8,19 @@ func initTest() {
 	memMap = map[string]string{}
 }
 
-func Test_Mem_AddToMem_Number(t *testing.T) {
+func Test_Mem_AddToMem_NonNumber(t *testing.T) {
 	initTest()
 	err := AddToMem("answer", "42.0000")
 	if err != nil {
 		t.Errorf("error: %s", err)
+	}
+}
+
+func Test_Mem_AddToMem_Number_ShouldBe_Error(t *testing.T) {
+	initTest()
+	err := AddToMem("42.0000", "42.0000")
+	if err == nil {
+		t.Errorf("expected error")
 	}
 }
 

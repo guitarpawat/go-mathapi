@@ -15,7 +15,7 @@ The default host is localhost and port is 8000. You can specify it by using `-ho
 ```
 go run main.go -port 8080
 ```
-This will run the API on localhost:8080
+This will run the API on `localhost:8080`
 
 ## Usage
 There are 8 basic commands:

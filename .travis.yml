@@ -2,6 +2,7 @@ language: go
 
 go:
   - 1.10.x
+  - tip
 
 go_import_path: github.com/guitarpawat/go-mathapi
 
@@ -14,7 +15,7 @@ before_install:
   - go get -t -v ./...
 
 script:
-  - go test -race -coverprofile=coverage.txt -covermode=atomic github.com/guitarpawat/...
+  - go test -race -coverprofile=coverage.txt -covermode=atomic ./...
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

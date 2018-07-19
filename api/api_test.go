@@ -81,7 +81,7 @@ func Test_APIHandler_Del_OK(t *testing.T) {
 	}
 }
 
-func Test_APIHandler_Del_NoContent(t *testing.T) {
+func Test_APIHandler_Del_NotFound(t *testing.T) {
 	preprocess.ResetMem()
 
 	res := httptest.NewRecorder()
@@ -89,8 +89,8 @@ func Test_APIHandler_Del_NoContent(t *testing.T) {
 	APIHandler(res, req)
 	resp := res.Result()
 
-	if resp.StatusCode != http.StatusNoContent {
-		t.Errorf("expected status code: %d but get: %d", http.StatusNoContent, resp.StatusCode)
+	if resp.StatusCode != http.StatusNotFound {
+		t.Errorf("expected status code: %d but get: %d", http.StatusNotFound, resp.StatusCode)
 		return
 	}
 }
@@ -220,7 +220,7 @@ func Test_DelHandler_NotExist(t *testing.T) {
 	DelHandler(res, "ant")
 	resp := res.Result()
 
-	if resp.StatusCode != http.StatusNoContent {
-		t.Errorf("expected status: %d but get: %d", http.StatusNoContent, resp.StatusCode)
+	if resp.StatusCode != http.StatusNotFound {
+		t.Errorf("expected status: %d but get: %d", http.StatusNotFound, resp.StatusCode)
 	}
 }

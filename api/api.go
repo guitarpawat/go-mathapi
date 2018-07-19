@@ -78,7 +78,7 @@ func MemHandler(w http.ResponseWriter, infix ...string) {
 func DelHandler(w http.ResponseWriter, key string) {
 	value, ok := preprocess.RemoveFromMem(key)
 	if !ok {
-		w.WriteHeader(http.StatusNoContent)
+		w.WriteHeader(http.StatusNotFound)
 		fmt.Fprintf(w, "cannot find key: %s", key)
 		return
 	}

@@ -14,6 +14,13 @@ var InvalidKey = map[string]struct{}{
 	"del": struct{}{},
 }
 
+// ProcessAll change all the infix to the list on map.
+func ProcessAll(in []string) []string {
+	res := ConstantToNumber(in)
+	res = MemToNumber(res)
+	return res
+}
+
 // IsKeyInAnyResource returns true if any map has the key.
 func IsKeyInAnyResource(key string) bool {
 	_, ok1 := GetConstant(key)

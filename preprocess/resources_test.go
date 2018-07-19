@@ -1,14 +1,22 @@
 package preprocess
 
 import (
+	"reflect"
 	"testing"
 )
 
+func Test_ProcessAll(t *testing.T) {
+
+}
+
 func Test_IsKeyInAnyResource_Constant(t *testing.T) {
-	expected := true
-	actual := IsKeyInAnyResource("phi")
-	if expected != actual {
-		t.Errorf("expected %t but get: %t", expected, actual)
+	ResetMem()
+	AddToMem("answer", "par", "20", "add", "1", "end", "mul", "2")
+	actual := ProcessAll([]string{"pi", "answer"})
+	expected := []string{"3.141593", "42.0000"}
+
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("expected: %v but get: %v", expected, actual)
 	}
 }
 

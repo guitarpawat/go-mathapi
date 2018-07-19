@@ -67,6 +67,46 @@ func Test_APIHandler_Mem(t *testing.T) {
 	}
 }
 
+func Test_APIHandler_Del_OK(t *testing.T) {
+	preprocess.ResetMem()
+	preprocess.AddToMem("answer", "42")
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/del/answer", nil)
+	APIHandler(res, req)
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected status code: %d but get: %d", http.StatusOK, resp.StatusCode)
+		return
+	}
+}
+
+func Test_APIHandler_Del_NotFound(t *testing.T) {
+	preprocess.ResetMem()
+
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/del/answer", nil)
+	APIHandler(res, req)
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusNotFound {
+		t.Errorf("expected status code: %d but get: %d", http.StatusNotFound, resp.StatusCode)
+		return
+	}
+}
+
+func Test_APIHandler_Del_Invalid(t *testing.T) {
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/del/answer/42", nil)
+	APIHandler(res, req)
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusInternalServerError {
+		t.Errorf("expected status code: %d but get: %d", http.StatusInternalServerError, resp.StatusCode)
+		return
+	}
+}
+
 func Test_APIHandler_Slash_ToIndexHandler(t *testing.T) {
 	res := httptest.NewRecorder()
 	req := httptest.NewRequest(http.MethodGet, "/", nil)

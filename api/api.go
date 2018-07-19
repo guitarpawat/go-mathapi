@@ -30,6 +30,17 @@ func APIHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if token[1] == "del" {
+		if len(token) == 3 {
+			DelHandler(w, token[2])
+		} else {
+			w.WriteHeader(http.StatusInternalServerError)
+			fmt.Fprintf(w, "expected format: /del/name")
+		}
+
+		return
+	}
+
 	result, err := evaluate.Evaluate(token[1:])
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -63,6 +74,7 @@ func MemHandler(w http.ResponseWriter, infix ...string) {
 	fmt.Fprintf(w, "Remember %s as %s", infix[0], value)
 }
 
+// DelHandler handles for path /mem/...
 func DelHandler(w http.ResponseWriter, key string) {
 	value, ok := preprocess.RemoveFromMem(key)
 	if !ok {

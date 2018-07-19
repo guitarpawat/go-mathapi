@@ -2,16 +2,16 @@ package preprocess
 
 // InvalidKey contains all reserved key.
 var InvalidKey = map[string]struct{}{
-	"add": struct{}{},
-	"sub": struct{}{},
-	"mul": struct{}{},
-	"div": struct{}{},
-	"mod": struct{}{},
-	"pow": struct{}{},
-	"par": struct{}{},
-	"end": struct{}{},
-	"mem": struct{}{},
-	"del": struct{}{},
+	"add": {},
+	"sub": {},
+	"mul": {},
+	"div": {},
+	"mod": {},
+	"pow": {},
+	"par": {},
+	"end": {},
+	"mem": {},
+	"del": {},
 }
 
 // ProcessAll change all the infix to the list on map.

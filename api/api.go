@@ -41,6 +41,7 @@ func APIHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, result)
 }
 
+// MemHandler handles for path /mem/...
 func MemHandler(w http.ResponseWriter, infix ...string) {
 	errMsg := "expected format: /mem/name/number or /mem/name/infix"
 	if len(infix) < 2 {

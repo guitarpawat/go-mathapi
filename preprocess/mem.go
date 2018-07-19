@@ -8,6 +8,17 @@ import (
 
 var memMap = map[string]string{}
 
+// MemToNumber replaces mem specify in mem map.
+func MemToNumber(in []string) []string {
+	for i := 0; i < len(in); i++ {
+		con, ok := GetFromMem(in[i])
+		if ok {
+			in[i] = con
+		}
+	}
+	return in
+}
+
 // AddToMem stores memory(value) to the key of map
 func AddToMem(key string, infix ...string) error {
 	if evaluate.IsNumber(key) {

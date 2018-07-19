@@ -1,8 +1,21 @@
 package preprocess
 
 import (
+	"reflect"
 	"testing"
 )
+
+func Test_MemToNumber(t *testing.T) {
+	ResetMem()
+	AddToMem("ant", "1.0000")
+	AddToMem("answer", "par", "20", "add", "1", "end", "mul", "2")
+	actual := MemToNumber([]string{"ant", "answer"})
+	expected := []string{"1.0000", "42.0000"}
+
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("expected: %v but get: %v", expected, actual)
+	}
+}
 
 func Test_Mem_AddToMem_NonNumber(t *testing.T) {
 	ResetMem()

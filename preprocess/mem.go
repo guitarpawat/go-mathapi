@@ -45,6 +45,7 @@ func RemoveFromMem(key string) (string, bool) {
 	return value, true
 }
 
+// ResetMem clears the map
 func ResetMem() {
 	memMap = map[string]string{}
 }

@@ -16,10 +16,16 @@ func init() {
 // ConstantToNumber replaces constants specify in consts map.
 func ConstantToNumber(in []string) []string {
 	for i := 0; i < len(in); i++ {
-		con, ok := consts[in[i]]
+		con, ok := GetConstant(in[i])
 		if ok {
 			in[i] = fmt.Sprintf("%.6f", con)
 		}
 	}
 	return in
+}
+
+// GetConstant by key and return value and boolean indicate validity.
+func GetConstant(key string) (float64, bool) {
+	con, ok := consts[key]
+	return con, ok
 }

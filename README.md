@@ -74,6 +74,12 @@ Output:
 * To delete memory, just use `/del/name`.
 > Example: `/del/answer` 
 
+#### Reserved names
+There is sum reserved names for prevents it to conflics with other operation:
+```
+add, sub, mul, div, mod, pow, par, end, mem, del
+```
+
 ## Procedure
 This program converts infix to postfix expression and solves the problem by using stack datatype.
 

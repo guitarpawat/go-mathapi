@@ -23,7 +23,7 @@ func APIHandler(w http.ResponseWriter, r *http.Request) {
 
 	token := strings.Split(r.URL.Path, "/")
 
-	token = preprocess.ConstantToNumber(token)
+	token = preprocess.ProcessAll(token)
 
 	if token[1] == "mem" {
 		MemHandler(w, token[2:]...)

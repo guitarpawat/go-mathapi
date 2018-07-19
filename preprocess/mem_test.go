@@ -64,7 +64,7 @@ func Test_RemoveFromMem_NotHas_Ok_ShouldBe_False(t *testing.T) {
 	}
 }
 
-func Test_RemoveFromMem_Has_Ok_ShouldBe_False(t *testing.T) {
+func Test_RemoveFromMem_Has_Ok_ShouldBe_True(t *testing.T) {
 	expected := "42.0000"
 	ResetMem()
 	_ = AddToMem("answer", expected)

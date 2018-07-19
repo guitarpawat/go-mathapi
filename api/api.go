@@ -23,8 +23,6 @@ func APIHandler(w http.ResponseWriter, r *http.Request) {
 
 	token := strings.Split(r.URL.Path, "/")
 
-	token = preprocess.ProcessAll(token)
-
 	if token[1] == "mem" {
 		MemHandler(w, token[2:]...)
 		return
@@ -40,6 +38,8 @@ func APIHandler(w http.ResponseWriter, r *http.Request) {
 
 		return
 	}
+
+	token = preprocess.ProcessAll(token)
 
 	result, err := evaluate.Evaluate(token[1:])
 	if err != nil {

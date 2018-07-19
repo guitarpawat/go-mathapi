@@ -70,6 +70,7 @@ func Test_APIHandler_Mem(t *testing.T) {
 func Test_APIHandler_Del_OK(t *testing.T) {
 	preprocess.ResetMem()
 	preprocess.AddToMem("answer", "42")
+
 	res := httptest.NewRecorder()
 	req := httptest.NewRequest(http.MethodGet, "/del/answer", nil)
 	APIHandler(res, req)

@@ -54,6 +54,7 @@ func InfixToPostfix(infix []string) ([]string, error) {
 	return postfix, nil
 }
 
+// IsNumber returns true if input can be float
 func IsNumber(s string) bool {
 	_, err := strconv.ParseFloat(s, 64)
 	return err == nil

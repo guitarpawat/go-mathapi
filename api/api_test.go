@@ -6,6 +6,8 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/guitarpawat/go-mathapi/preprocess"
 )
 
 func Test_APIHandler_OK(t *testing.T) {
@@ -111,6 +113,7 @@ func Test_APIHandler_Call_ConstantToNumber(t *testing.T) {
 }
 
 func Test_MemHandler(t *testing.T) {
+	preprocess.ResetMem()
 	res := httptest.NewRecorder()
 	expected := "Remember ant as 1"
 
@@ -134,6 +137,7 @@ func Test_MemHandler(t *testing.T) {
 }
 
 func Test_MemHandler_Invalid(t *testing.T) {
+	preprocess.ResetMem()
 	res := httptest.NewRecorder()
 
 	MemHandler(res, "ant")
@@ -145,6 +149,7 @@ func Test_MemHandler_Invalid(t *testing.T) {
 }
 
 func Test_MemHandler_Reject(t *testing.T) {
+	preprocess.ResetMem()
 	res := httptest.NewRecorder()
 
 	MemHandler(res, "12", "34")
@@ -152,5 +157,30 @@ func Test_MemHandler_Reject(t *testing.T) {
 	resp := res.Result()
 	if resp.StatusCode != http.StatusInternalServerError {
 		t.Errorf("expected status code: %d but get: %d", http.StatusInternalServerError, resp.StatusCode)
+	}
+}
+
+func Test_DelHandler_Exist(t *testing.T) {
+	preprocess.ResetMem()
+	preprocess.AddToMem("ant", "1")
+
+	res := httptest.NewRecorder()
+	DelHandler(res, "ant")
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected status: %d but get: %d", http.StatusOK, resp.StatusCode)
+	}
+}
+
+func Test_DelHandler_NotExist(t *testing.T) {
+	preprocess.ResetMem()
+
+	res := httptest.NewRecorder()
+	DelHandler(res, "ant")
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusNotFound {
+		t.Errorf("expected status: %d but get: %d", http.StatusNotFound, resp.StatusCode)
 	}
 }

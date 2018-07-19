@@ -62,3 +62,14 @@ func MemHandler(w http.ResponseWriter, infix ...string) {
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Remember %s as %s", infix[0], value)
 }
+
+func DelHandler(w http.ResponseWriter, key string) {
+	value, ok := preprocess.RemoveFromMem(key)
+	if !ok {
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Fprintf(w, "cannot find key: %s", key)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "successfully delete key %s with value %s", key, value)
+}

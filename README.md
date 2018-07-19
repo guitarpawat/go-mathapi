@@ -90,4 +90,3 @@ This program converts infix to postfix expression and solves the problem by usin
 ## TODO
 * Support for trigonometry and logarithm.
 * Self define function, for example, `myfunc is (x+y)^2`.
-* Add number memory.

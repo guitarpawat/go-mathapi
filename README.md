@@ -72,7 +72,7 @@ Output:
 > Output: `160.0000`
 
 * To delete memory, just use `/del/name`.
-> Example: `/del/mem` 
+> Example: `/del/answer` 
 
 ## Procedure
 This program converts infix to postfix expression and solves the problem by using stack datatype.

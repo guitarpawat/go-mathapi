@@ -61,6 +61,8 @@ func MemHandler(w http.ResponseWriter, infix ...string) {
 		return
 	}
 
+	infix = append(infix[:1], preprocess.ProcessAll(infix[1:])...)
+
 	err := preprocess.AddToMem(infix[0], infix[1:]...)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

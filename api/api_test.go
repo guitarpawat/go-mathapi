@@ -250,3 +250,27 @@ func Test_APIHandler_Call_MemToNumber(t *testing.T) {
 		t.Errorf("expected result: %s but get: %s", expected, actual)
 	}
 }
+
+func Test_Mem_AllowRecursive(t *testing.T) {
+	expected := "-42.0000"
+	preprocess.ResetMem()
+	preprocess.AddToMem("answer", "42.0000")
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/mem/answer/answer/mul/-1", nil)
+	APIHandler(res, req)
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected status code: %d but get: %d", http.StatusOK, resp.StatusCode)
+		return
+	}
+
+	actual, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Errorf("unexpected error when reading body: %s", err)
+	}
+
+	if !strings.ContainsAny(string(actual), expected) {
+		t.Errorf("expected result: %s but get: %s", expected, string(actual))
+	}
+}

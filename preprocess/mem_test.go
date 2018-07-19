@@ -91,6 +91,43 @@ func Test_Mem_AddToMem_Evaluate_ShouldBe_Error(t *testing.T) {
 	err := AddToMem("answer", "par", "20", "add", "1", "end", "mul", "2", "2")
 	if err == nil {
 		t.Error("expected error")
+	}
+}
+
+func Test_Mem_AddToMem_InvalidKey(t *testing.T) {
+	ResetMem()
+	err := AddToMem("pow", "par", "20", "add", "1", "end", "mul", "2")
+	if err == nil {
+		t.Error("expected error")
+	}
+}
+
+func Test_Mem_AddToMem_DuplicateKey(t *testing.T) {
+	ResetMem()
+	err := AddToMem("e", "par", "20", "add", "1", "end", "mul", "2")
+	if err == nil {
+		t.Error("expected error")
+	}
+}
+
+func Test_Mem_AddToMem_UpdateKey_ShouldBe_Allowed(t *testing.T) {
+	ResetMem()
+	err := AddToMem("memo", "par", "20", "add", "1", "end", "mul", "2")
+	if err != nil {
+		t.Errorf("error: %s", err)
 		return
+	}
+
+	err = AddToMem("memo", "12.3456")
+	if err != nil {
+		t.Errorf("error: %s", err)
+		return
+	}
+
+	expected := "12.3456"
+	actual, _ := GetFromMem("memo")
+
+	if expected != actual {
+		t.Errorf("expected: %s but get: %s", expected, actual)
 	}
 }

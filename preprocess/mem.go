@@ -14,6 +14,11 @@ func AddToMem(key string, infix ...string) error {
 		return fmt.Errorf("%s is a number", key)
 	}
 
+	_, ok := GetFromMem(key)
+	if (IsKeyInAnyResource(key) && !ok) || !IsValidKey(key) {
+		return fmt.Errorf("cannot remember using name: %s", key)
+	}
+
 	result, err := evaluate.Evaluate(infix)
 	if err != nil {
 		return fmt.Errorf("cannot add to memory: %s", err)

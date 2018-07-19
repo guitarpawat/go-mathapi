@@ -225,3 +225,28 @@ func Test_DelHandler_NotExist(t *testing.T) {
 		t.Errorf("expected status: %d but get: %d", http.StatusNotFound, resp.StatusCode)
 	}
 }
+
+func Test_APIHandler_Call_MemToNumber(t *testing.T) {
+	expected := "42.0000"
+	preprocess.ResetMem()
+	preprocess.AddToMem("answer", expected)
+
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/answer", nil)
+	APIHandler(res, req)
+	resp := res.Result()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected status code: %d but get: %d", http.StatusOK, resp.StatusCode)
+		return
+	}
+
+	actual, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Errorf("unexpected error when reading body: %s", err)
+	}
+
+	if strings.TrimSpace(string(actual)) != expected {
+		t.Errorf("expected result: %s but get: %s", expected, actual)
+	}
+}

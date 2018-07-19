@@ -39,3 +39,7 @@ func RemoveFromMem(key string) (string, bool) {
 	delete(memMap, key)
 	return value, true
 }
+
+func ResetMem() {
+	memMap = map[string]string{}
+}

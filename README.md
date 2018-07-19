@@ -47,7 +47,32 @@ Output:
 
 ## Features
 
-* Support constants for e, pi and phi; just use `/e`, `/pi` and `/phi`.
+### Constants
+* Support for e, pi and phi; just use `/e`, `/pi` and `/phi`.
+
+### Memory
+* To memory new result, just use `/mem/name/expression`.
+> Example: `/mem/answer/40/add/2` 
+> 
+> Then, `answer` is `42.0000`
+
+* To use, just treats it like a normal number.
+> Example: `/answer/sub/2` 
+> 
+> Output: `40.0000`
+
+* To update, just do like adding new memory.
+> Example: `/mem/answer/40/mul/2` 
+> 
+> Output: `80.0000`
+
+* Also support update with same name.
+> Example: `/mem/answer/answer/mul/2` 
+> 
+> Output: `160.0000`
+
+* To delete memory, just use `/del/name`.
+> Example: `/del/mem` 
 
 ## Procedure
 This program converts infix to postfix expression and solves the problem by using stack datatype.

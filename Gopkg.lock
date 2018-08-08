@@ -3,24 +3,28 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:a03585d25acbe965f8ffdf9bd6f0cd2d9a79bd5d0168f44ecaeb53859bad2f4a"
   name = "github.com/golang-commonmark/markdown"
   packages = [
     ".",
     "byteutil",
     "html",
-    "linkify"
+    "linkify",
   ]
+  pruneopts = "UT"
   revision = "11a7a839e723aa293cccdc353b394dbfce7c131e"
 
 [[projects]]
   branch = "master"
+  digest = "1:c739832d67eb1e9cc478a19cc1a1ccd78df0397bf8a32978b759152e205f644b"
   name = "github.com/opennota/urlesc"
   packages = ["."]
+  pruneopts = "UT"
   revision = "de5bf2ad457846296e2031421a34e2568e304e35"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bcbfdc26bcb03a9cb0834916a0bb989ff0431318f460a99ced368f8aaaf84010"
+  input-imports = ["github.com/golang-commonmark/markdown"]
   solver-name = "gps-cdcl"
   solver-version = 1

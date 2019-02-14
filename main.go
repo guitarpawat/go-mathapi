@@ -11,7 +11,7 @@ import (
 	"github.com/guitarpawat/go-mathapi/api"
 )
 
-var host = flag.String("host", "localhost", "Specify running host of API")
+var host = flag.String("host", "", "Specify running host of API")
 var port = flag.Int("port", 0, "Specify running host of API")
 
 func main() {
